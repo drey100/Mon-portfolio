@@ -283,7 +283,7 @@
 <header id="about" class="animate">
   <h1>Coffi Audrey Tanguy Kakpo</h1>
   <p>Développeur Web, <br>Consultant junior en Marketing & Ressources Humaines</p>
-  <img src="images/IMG-20250515-WA0355~2 (1).jpg" alt="Photo Tanguy Kakpo" />
+  <img src="IMG-20250515-WA0355~2 (1).jpg" alt="Photo Tanguy Kakpo" />
   <p style="margin-top:20px; font-weight:700;">
     Étudiant en marketing et management des organisations, passionné par le développement web, avec une expérience dans la gestion documentaire et la création d’applications modernes.<br>
     Ouvert à des contrats à durée déterminée, temps partiels, stage professionnel.
@@ -446,15 +446,16 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
   </div>
 </section>
 
-<form id="contactForm">
-  <label for="name">Nom</label>
-  <input type="text" id="name" name="name" required />
 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required />
+<form id="contactForm" method="POST" action="#">
+  <label for="nameInput">Nom</label>
+  <input type="text" name="name" id="nameInput" required />
 
-  <label for="message">Message</label>
-  <textarea id="message" name="message" required></textarea>
+  <label for="emailInput">Email</label>
+  <input type="email" name="email" id="emailInput" required />
+
+  <label for="messageInput">Message</label>
+  <textarea name="message" id="messageInput" required></textarea>
 
   <button type="submit">Envoyer</button>
 </form>
@@ -504,21 +505,21 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
     {
       title: "Backend du  projet Mon Mentor",
       description: "Plateforme de mise en relation pour mentorat étudiant.",
-      image: "/marketing_cv/images/monMentor.png",
+      image: "images/monMentor.png",
       link: "https://mentorapi-wyzr.onrender.com/api-docs/register#/"
     },
-    {
-      title: "ParakouPay(en cours)",
-      description: "Application locale de paiement de loyers sécurisés par mobile money.",
-      image: "images/project2.jpg",
-      link: "#"
-    },
-    {
-      title: "Blog Marketing(en cours)",
-      description: "Rédaction et optimisation SEO pour un blog sur le marketing stratégique.",
-      image: "images/project3.jpg",
-      link: "#"
-    }
+    // {
+    //   title: "ParakouPay(en cours)",
+    //   description: "Application locale de paiement de loyers sécurisés par mobile money.",
+    //   // image: "images/project2.jpg",
+    //   link: "#"
+    // },
+    // {
+    //   title: "Blog Marketing(en cours)",
+    //   description: "Rédaction et optimisation SEO pour un blog sur le marketing stratégique.",
+    //   // image: "images/project3.jpg",
+    //   link: "#"
+    // }
   ];
 
   const projectsGrid = document.getElementById("projectsGrid");
@@ -572,7 +573,8 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
     }
   });
 
- 
+
+  
 </script>
 
 </body>
