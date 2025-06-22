@@ -446,24 +446,19 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
   </div>
 </section>
 
-<form action="https://formsubmit.co/tang.kakpo@gmail.com" method="POST">
+<form id="contactForm">
   <label for="name">Nom</label>
-  <input type="text" id="name" name="name" required placeholder="Votre nom">
+  <input type="text" id="name" name="name" required />
 
   <label for="email">Email</label>
-  <input type="email" id="email" name="email" required placeholder="Votre email">
+  <input type="email" id="email" name="email" required />
 
   <label for="message">Message</label>
-  <textarea id="message" name="message" rows="5" required placeholder="Votre message"></textarea>
-
-  <!-- Optionnel : désactive le captcha -->
-  <input type="hidden" name="_captcha" value="false">
-
-  <!-- Redirige après l'envoi -->
-  <input type="hidden" name="_next" value="https://ton-site.com/merci.html">
+  <textarea id="message" name="message" required></textarea>
 
   <button type="submit">Envoyer</button>
 </form>
+
 <br>
 
 
@@ -539,17 +534,46 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
     projectsGrid.appendChild(card);
   });
 
-  // Formulaire contact
-  const form = document.getElementById('contactForm');
-  form.addEventListener('submit', function(e) {
+  // Gestion du formulaire de contact
+   document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    if(!form.checkValidity()) {
-      alert("Veuillez remplir correctement tous les champs.");
+
+    const name = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    const message = document.getElementById('messageInput').value.trim();
+    
+
+    if (!name || !email || !message) {
+      alert("Merci de remplir tous les champs.");
       return;
     }
-    alert("Merci pour votre message, je vous répondrai bientôt !");
-    form.reset();
+
+    const formData = { name, email, message };
+
+    try {
+      // Remplace 'localhost:5000' par l'URL de ton backend si déployé
+      const response = await fetch('http://localhost:5000/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('contactName', name.split(' ')[0]);
+        // Redirection vers une page de remerciement
+        window.location.href = "merci.html";
+      } else {
+        alert(result.error || "Une erreur est survenue lors de l'envoi.");
+      }
+    } catch (error) {
+      console.error("Erreur réseau :", error);
+      alert("Impossible d'envoyer le message. Vérifiez votre connexion.");
+    }
   });
+
+ 
 </script>
 
 </body>

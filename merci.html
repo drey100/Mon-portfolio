@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Merci pour votre message !</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merci pour votre message</title>
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: #f0f8ff;
+      color: #002244;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 100px 20px;
+      padding: 50px;
     }
+
     h1 {
-      color: #0056b3;
+      color: #007bff;
+      font-size: 2.5rem;
     }
-    a {
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    img {
+      max-width: 300px;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    a.button {
       display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      background: #007bff;
+      background-color: #007bff;
       color: white;
-      padding: 12px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
     }
-    a:hover {
-      background: #0056b3;
+
+    a.button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
   <h1>Merci !</h1>
-  <p>Votre message a bien été envoyé. Je vous répondrai dans les plus brefs délais.</p>
-  <a href="portfolio.html">Retour à l'accueil</a>
+  <p>Votre message a bien été envoyé.<br>Je vous répondrai dans les plus brefs délais.</p>
+
+  <img src="https://i.pinimg.com/originals/05/e9/59/05e95967206bcd7d1bd55b45ccd1a049.jpg" alt="Merci illustration">
+
+  <br><br>
+  <a href="index.html" class="button">Retour à l’accueil</a>
 </body>
 </html>
