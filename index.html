@@ -534,42 +534,41 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
     projectsGrid.appendChild(card);
   });
 
-  // Gestion du formulaire de contact
-   document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  // Formulaire contact
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const name = document.getElementById('nameInput').value.trim();
-    const email = document.getElementById('emailInput').value.trim();
-    const message = document.getElementById('messageInput').value.trim();
-    
+    const email = document.querySelector('input[name="email"]').value.trim();
+    const message = document.querySelector('textarea[name="message"]').value.trim();
 
     if (!name || !email || !message) {
-      alert("Merci de remplir tous les champs.");
+      alert("Veuillez remplir tous les champs.");
       return;
     }
 
     const formData = { name, email, message };
 
     try {
-      // Remplace 'localhost:5000' par l'URL de ton backend si déployé
       const response = await fetch('https://api-portfolio-1cgn.onrender.com/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
       const result = await response.json();
 
       if (response.ok) {
+        // Stocker le prénom dans localStorage avant redirection
         localStorage.setItem('contactName', name.split(' ')[0]);
-        // Redirection vers une page de remerciement
+        // Rediriger vers la page de remerciement
         window.location.href = "merci.html";
       } else {
-        alert(result.error || "Une erreur est survenue lors de l'envoi.");
+        alert(result.error || "Une erreur est survenue lors de l'envoi du message.");
       }
     } catch (error) {
       console.error("Erreur réseau :", error);
-      alert("Impossible d'envoyer le message. Vérifiez votre connexion.");
+      alert("Une erreur réseau est survenue, veuillez réessayer.");
     }
   });
 
