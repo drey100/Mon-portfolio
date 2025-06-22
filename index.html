@@ -552,7 +552,7 @@ Plateforme pour centraliser les données RH, historiques de formation, compéten
 
     try {
       // Remplace 'localhost:5000' par l'URL de ton backend si déployé
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch('https://api-portfolio-1cgn.onrender.com/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
